@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="15dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="25dp"
+    app:cardElevation="25dp"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+
+        <ImageView
+            android:id="@+id/imagenProducto"
+            android:layout_width="175dp"
+            android:layout_height="175dp"
+            android:src="@drawable/carrito" />
+
+        <TextView
+            android:id="@+id/nombreProducto"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Producto"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/precioProducto"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="250,00 €"
+            android:textSize="15sp" />
+
+        <Button
+            android:background="@color/blue"
+            android:layout_marginTop="10dp"
+            android:id="@+id/btnAgregar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Agregar al carrito"
+            android:textSize="20dp"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>
