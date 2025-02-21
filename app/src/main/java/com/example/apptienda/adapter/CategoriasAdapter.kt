@@ -1,6 +1,7 @@
 package com.example.apptienda.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.apptienda.R
+import com.example.apptienda.SecondActivity
 import com.example.apptienda.model.Productos.ProductosJSON
 import com.google.android.material.snackbar.Snackbar
 import java.util.ArrayList
@@ -51,6 +53,7 @@ class CategoriasAdapter(var lista: ArrayList<ProductosJSON>, var context: Contex
         holder.boton.setOnClickListener {
             listener.onProductoSelected(producto)
             Snackbar.make(holder.boton,"Producto añadido al carrito",Snackbar.LENGTH_SHORT).show()
+            val intent = Intent(context, SecondActivity::class.java)
             return@setOnClickListener
         }
 

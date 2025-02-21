@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity(), CategoriasAdapter.OnProductoListener {
 
             },
 
-            //val gson = Gson()
 
             { Log.v("datos",it.toString())})
         Volley.newRequestQueue(applicationContext).add(peticion) // para lanzar la peticion
