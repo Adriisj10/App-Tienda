@@ -12,15 +12,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.apptienda.R
 import com.example.apptienda.SecondActivity
+import com.example.apptienda.model.Productos.CartManager
 import com.example.apptienda.model.Productos.ProductosJSON
 import com.google.android.material.snackbar.Snackbar
 import java.util.ArrayList
 
-class CategoriasAdapter(var lista: ArrayList<ProductosJSON>, var context: Context):RecyclerView.Adapter<CategoriasAdapter.MyHolder>(){
-    private lateinit var listener: OnProductoListener
-    init {
-        listener = context as OnProductoListener
-    }
+class CategoriasAdapter(private val lista: ArrayList<ProductosJSON>, private val context: Context, private val cartManager: CartManager = CartManager()):RecyclerView.Adapter<CategoriasAdapter.MyHolder>(){
+
+
 
     //itemView -> pasar a vista el XML con todos sus elementos. inner para clase anidada
     inner class MyHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -43,25 +42,22 @@ class CategoriasAdapter(var lista: ArrayList<ProductosJSON>, var context: Contex
 
     }
 
+
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
         // pintara cada linea con su dato correspndiente
         val producto: ProductosJSON = lista[position]
         // Usamos Glide para cargar la imagen
         Glide.with(holder.itemView.context).load(producto.thumbnail).into(holder.imagen)
         holder.nombre.text = producto.title
-        holder.precio.text = producto.price.toString()
+        holder.precio.text = "${producto.price} €"
         holder.boton.setOnClickListener {
-            listener.onProductoSelected(producto)
+            cartManager.addProduct(producto) // Añadir el producto al carrito
             Snackbar.make(holder.boton,"Producto añadido al carrito",Snackbar.LENGTH_SHORT).show()
-            val intent = Intent(context, SecondActivity::class.java)
-            return@setOnClickListener
         }
 
 
     }
-    interface OnProductoListener{
-        fun onProductoSelected(producto:ProductosJSON)
-    }
+
 
 
 }
